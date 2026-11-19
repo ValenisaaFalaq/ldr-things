@@ -69,21 +69,21 @@ textarea{width:100%;padding:12px;border:1.5px solid var(--beige);border-radius:1
 </style></head><body>
 <div class="wrap">
 <header><span class="logo"><i data-lucide="train-front"></i></span>Trip Planner Cilacap</header>
-<p class="intro" id="intro">Perjalanan 4 sampai 6 Desember 2026. Pilih kereta, penginapan, destinasi, dan tempat makan. Sistem akan menyusun itinerary dan estimasi biaya secara otomatis.</p>
+<p class="intro" id="intro">Perjalanan 4 sampai 6 Desember 2026. Pilih kereta, penginapan, destinasi, dan tempat makan.</p>
 <div class="steps" id="steps"></div>
 
-<div id="p1"><h2>Kereta berangkat</h2><p class="lead">Pilih kota asal dan tanggal, lalu pilih kereta yang kamu mau.</p>
+<div id="p1"><h2>Kereta berangkat</h2><p class="lead">Pilih kota asal dan tanggal, trus pilih keretanya</p>
 <div class="chips" id="origins"></div><div class="chips" id="dates"></div><div class="grid" id="trains"></div></div>
-<div id="p2"><h2>Kereta pulang</h2><p class="lead">Pulang tanggal 6 Desember 2026, sesuai kota asalmu.</p><div class="grid" id="rets"></div></div>
-<div id="p3"><h2>Penginapan</h2><p class="lead">Pilih satu penginapan. Harga untuk 1 malam, berupa estimasi dan bukan harga real-time.</p><div class="grid" id="hotels"></div></div>
+<div id="p2"><h2>Kereta pulang</h2><p class="lead">Pulang tanggal 6 Desember 2026, sesuai kota berangkat</p><div class="grid" id="rets"></div></div>
+<div id="p3"><h2>Penginapan</h2><p class="lead">Pilih satu penginapan. Harga untuk 1 malam, queen bed semua ini</p><div class="grid" id="hotels"></div></div>
 <div id="p4"><h2>Destinasi</h2>
-<div class="info"><i data-lucide="info"></i><span>Kamu bisa memilih lebih dari satu destinasi. Pilih sebanyak yang kamu inginkan, nanti sistem akan menyusun itinerary berdasarkan waktu yang tersedia.</span></div>
+<div class="info"><i data-lucide="info"></i><span>pilih aja mau kemana... tpi ya gabisa pilih semua dong</span></div>
 <div class="grid" id="dests"></div>
 <textarea id="reqD" rows="2" placeholder="Destinasi lainnya (opsional)"></textarea></div>
 <div id="p5"><h2>Tempat makan</h2>
-<div class="info"><i data-lucide="info"></i><span>Kamu bisa memilih beberapa tempat makan pagi dan malam. Sistem akan menyusun itinerary secara otomatis berdasarkan waktu yang tersedia.</span></div>
-<div class="sub"><i data-lucide="sunrise"></i>Breakfast / Morning spots</div><div class="grid" id="bfs"></div>
-<div class="sub"><i data-lucide="moon"></i>Dinner / Night spots</div><div class="grid" id="dns"></div>
+<div class="info"><i data-lucide="info"></i><span>ini beberapa spot makan</span></div>
+<div class="sub"><i data-lucide="sunrise"></i>Makan Pagi Siang</div><div class="grid" id="bfs"></div>
+<div class="sub"><i data-lucide="moon"></i>Makan Malem</div><div class="grid" id="dns"></div>
 <textarea id="reqF" rows="2" placeholder="Request makanan lainnya (opsional)"></textarea></div>
 <div id="p6" class="res"></div>
 <button class="reset" id="resetB" onclick="resetAll()">Reset semua pilihan</button>
@@ -288,7 +288,7 @@ ${w}
 <div class="bar">${bc.map(c=>`<div style="width:${c[1]/B.tot*100}%;background:${c[2]}"></div>`).join('')}</div>
 ${bc.map(c=>`<div class="li"><span><i style="background:${c[2]}"></i>${c[0]}</span><b>${rp(c[1])}</b></div>`).join('')}
 <div class="li tot"><span>TOTAL ESTIMASI BUDGET</span><span>${rp(B.tot)}</span></div>
-<p class="small">Budget makan ${rp(CFG.foodBudget)} untuk 2 orang selama perjalanan. ${CFG.miscNote} Semua angka adalah estimasi, bukan harga final.</p></div>`}
+</div>`}
 
 function waText(){const C=plan(),B=budget();if(!C||C.bad)return '';
 const t=C.t,r=C.r,nl=(a)=>a.length?a.map((x,i)=>`${i+1}. ${x.n}`).join('\n'):'-';
