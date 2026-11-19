@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CILACAP LAGI</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,500&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f0e3;--beige:#eadcc4;--blue:#8fa9c2;--blueD:#4f6f8c;--brown:#4a3326;--card:#fffaf0;--ok:#5f8f6a;--warn:#c9922e;--bad:#b5574b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--brown);font:16px/1.55 Nunito,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0}
+nav{position:sticky;top:0;z-index:9;background:#f7f0e3ee;backdrop-filter:blur(8px);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;border-bottom:1px solid var(--beige)}
+nav a{white-space:nowrap;text-decoration:none;color:var(--brown);padding:6px 12px;border-radius:99px;font-weight:600;font-size:14px}
+nav a:hover{background:var(--beige)}
+section{max-width:980px;margin:0 auto;padding:44px 16px}
+.hero{text-align:center;padding-top:60px}
+.hero small{letter-spacing:.08em;color:var(--blueD);font-weight:800}
+.hero h1{font-size:clamp(46px,13vw,104px);line-height:1;margin:10px 0;letter-spacing:.02em}
+.sub{font-family:Fraunces,serif;font-style:italic;font-size:clamp(20px,4vw,28px);color:var(--blueD)}
+.track{position:relative;height:46px;margin:28px auto;max-width:520px;border-bottom:3px dotted var(--blue);display:flex;justify-content:space-between;font-weight:800}
+.track i{position:absolute;bottom:-4px;left:0;font-style:normal;font-size:30px;animation:ride 5s ease-in-out forwards}
+@keyframes ride{to{left:calc(50% - 15px)}}
+.date{display:inline-block;background:var(--brown);color:var(--cream);padding:8px 20px;border-radius:99px;font-weight:800;margin:6px}
+.btn{border:0;background:var(--blueD);color:#fff;padding:12px 24px;border-radius:99px;font:800 16px Nunito;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.95)}
+.btn.alt{background:var(--beige);color:var(--brown)}
+h2{font-size:30px;margin-bottom:4px}.lead{color:#7a6657;margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.chip{border:2px solid var(--beige);background:var(--card);color:var(--brown);padding:9px 18px;border-radius:99px;font:700 15px Nunito;cursor:pointer;transition:.2s}
+.chip.on{background:var(--blueD);border-color:var(--blueD);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.card{background:var(--card);border:2px solid var(--beige);border-radius:22px;padding:16px;cursor:pointer;position:relative;transition:.2s}
+.card:hover{border-color:var(--blue)}
+.card.sel{border-color:var(--blueD);background:#eef3f8;animation:pop .3s}
+.card.sel:after{content:"✓";position:absolute;top:10px;right:12px;background:var(--blueD);color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-weight:800}
+@keyframes pop{50%{transform:scale(1.03)}}
+.top{display:flex;justify-content:space-between;gap:8px;padding-right:26px}
+.price{font-weight:800;color:var(--blueD)}
+.note{background:var(--beige);border-radius:12px;padding:8px 10px;margin-top:10px;font-size:14px}
+.card small{color:#7a6657;display:block}
+.photo{height:90px;border-radius:14px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:10px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.card a{color:var(--blueD);font-weight:700;font-size:14px}
+.dur{width:64px;padding:4px 6px;border:1px solid var(--blue);border-radius:8px;font:inherit;background:#fff}
+.hint{color:#7a6657;font-style:italic}
+textarea,input[type=text]{width:100%;padding:10px;border:2px solid var(--beige);border-radius:14px;font:inherit;background:var(--card);margin-top:10px}
+.panel{background:var(--card);border:2px solid var(--beige);border-radius:22px;padding:18px;margin-bottom:16px}
+.form{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.form label{font-size:13px;font-weight:700;display:block}
+.form input,.form select{width:100%;padding:8px;border:1px solid var(--blue);border-radius:10px;font:inherit;background:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:12px 0}
+.stat{background:var(--cream);border-radius:14px;padding:10px}.stat b{display:block;font-size:18px}
+.badge{display:inline-block;padding:6px 16px;border-radius:99px;color:#fff;font-weight:800}
+.bar{display:flex;height:22px;border-radius:99px;overflow:hidden;background:var(--beige);margin:10px 0}
+.leg span{display:inline-block;margin:2px 10px 2px 0;font-size:14px}.leg i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px}
+.day h3{margin:14px 0 6px;color:var(--blueD)}
+.ev{display:flex;gap:10px;padding:5px 0;border-bottom:1px dashed var(--beige)}.ev b{min-width:98px;font-weight:800}
+.ticket{background:var(--card);border:2px dashed var(--blueD);border-radius:26px;padding:22px}
+.ticket h2{text-align:center}.ticket .c{text-align:center;color:var(--blueD);font-weight:800;margin-bottom:12px}
+.ticket p{margin:6px 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,80px);background:var(--brown);color:#fff;padding:10px 20px;border-radius:99px;transition:.3s;z-index:20}
+#toast.on{transform:translate(-50%,0)}
+footer{text-align:center;padding:30px;color:#7a6657}
+@media print{nav,.hero,.noprint,.btns,footer,#toast{display:none!important}section.pr{padding:0}.ticket{border:0}body{background:#fff}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav class="noprint"><a href="#top">🏠 Home</a><a href="#kereta">🚆 Berangkat</a><a href="#pulang">🔙 Pulang</a><a href="#hotel">🛏️ Hotel</a><a href="#wisata">📍 Wisata</a><a href="#makan">🍜 Makan</a><a href="#hitung">🧮 Hitung</a><a href="#ringkas">🎫 Ringkasan</a></nav>
+
+<section class="hero noprint" id="top">
+<small>OUR LITTLE TRIP · CILACAP EDITION 🌊</small>
+<h1>CILACAP LAGI</h1>
+<div class="sub">when ya aku ke Malang</div>
+<div class="track"><i>🚆</i><span>🏠 Kediri / Malang</span><span>Cilacap 💙</span></div>
+<div class="date">📅 4 — 6 December 2026</div>
+<p class="sub" style="font-size:22px">wleeeeek 😝</p>
+<p>Two Cities, One Destination: Us. 🤍<br>Pilih kereta, hotel, tempat jalan &amp; makan, nanti jadwal dan biayanya kehitung sendiri.</p>
+<button class="btn" onclick="document.getElementById('kereta').scrollIntoView()">Let's Plan Our Trip ✈️</button>
+</section>
+
+<section id="kereta" class="noprint">
+<h2>🚆 Kereta berangkat</h2><p class="lead">Pilih kota asal dan tanggal dulu, nanti kereta yang cocok muncul.</p>
+<div class="chips" id="origins"></div><div class="chips" id="dates"></div>
+<div class="grid" id="trains"></div>
+</section>
+
+<section id="pulang" class="noprint">
+<h2>🔙 Kereta pulang · 6 Desember</h2><p class="lead">Pilihan pulang mengikuti kota asalmu.</p>
+<div class="grid" id="rets"></div>
+</section>
+
+<section id="hotel" class="noprint">
+<h2>🛏️ Penginapan</h2><p class="lead">Pilih satu. Harga estimasi dari data yang diberikan, bukan harga real-time.</p>
+<div class="grid" id="hotels"></div>
+</section>
+
+<section id="wisata" class="noprint">
+<h2>📍 Mau ke mana aja?</h2><p class="lead">Boleh pilih banyak. Durasi kunjungan bisa diedit.</p>
+<div class="grid" id="dests"></div>
+<textarea id="reqD" rows="2" placeholder="✏️ Request khusus: tulis tempat lain yang mau dikunjungi"></textarea>
+</section>
+
+<section id="makan" class="noprint">
+<h2>🍜 Mau makan apa?</h2><p class="lead">Boleh pilih banyak. Durasi makan bisa diedit.</p>
+<div class="grid" id="foods"></div>
+<textarea id="reqF" rows="2" placeholder="Mau makan apa? Tulis request kamu di sini."></textarea>
+</section>
+
+<section id="hitung" class="noprint">
+<h2>🧮 Hitung waktu &amp; biaya</h2><p class="lead">Semua angka di bawah ini estimasi manual dan bisa kamu ubah.</p>
+<div class="panel"><h3>⚙️ Pengaturan waktu</h3><div class="form" id="setForm"></div></div>
+<div class="panel"><h3>⏳ Kalkulator waktu</h3><div id="calc"></div></div>
+<div class="panel"><h3>🗓️ Itinerary otomatis</h3><div id="itin"></div></div>
+<div class="panel"><h3>💸 Estimasi biaya</h3><div class="form" id="budForm"></div><div id="budget"></div></div>
+</section>
+
+<section id="ringkas" class="pr">
+<div class="ticket"><div id="sum"></div></div>
+<div class="btns noprint">
+<button class="btn" onclick="saveTrip()">💾 Save My Trip</button>
+<button class="btn alt" onclick="printTrip()">🖨️ Print Itinerary</button>
+<button class="btn alt" onclick="copyTrip()">📋 Copy Trip Summary</button>
+<button class="btn alt" onclick="resetAll()">🗑️ Reset Selection</button></div>
+</section>
+<footer class="noprint">Made with 💙 for us · Cilacap, 4–6 Desember 2026</footer>
+<div id="toast"></div>
+
+<script>
+/* ============ KONFIGURASI DATA (edit di sini) ============ */
+const DATA={
+trains:{
+Kediri:{
+4:[{n:'Kahuripan',r:'Kediri – Maos',d:'20.42',a:'03.42',ad:5,p:80000,note:'Ini paling murah dan budget friendly. Kekurangannya tempat duduk kurang nyaman.'},
+{n:'Malioboro',r:'Kediri – Kroya',d:'21.03',a:'02.53',ad:5,p:280000,note:'Terlalu pagi, nanti nunggunya kelamaan nggak?'},
+{n:'Malabar',r:'Kediri – Maos',d:'19.09',a:'00.44',ad:5,p:310000,note:'Not recommend karena jam 1 pagi banget Allahu.'}],
+5:[{n:'Malabar',r:'Kediri – Kroya',d:'07.43',a:'13.06',ad:5,p:310000,note:'Bisa langsung check-in dan istirahat.'},
+{n:'Kertanegara',r:'Kediri – Kroya',d:'10.57',a:'16.53',ad:5,p:280000,note:'Check-in pakai nama aku, kamu bisa langsung istirahat kalau datang.'}]},
+Malang:{
+4:[{n:'Malioboro',r:'Malang – Kroya',d:'18.35',a:'02.53',ad:5,p:280000,note:'Kalau memang dari Malang berangkatnya ini best option.'}],
+5:[{n:'Malabar',r:'Malang – Kroya',d:'05.40',a:'13.49',ad:5,p:410000,note:'Ini bisa langsung check-in.'},
+{n:'Kertanegara',r:'Malang – Kroya',d:'08.30',a:'16.53',ad:5,p:280000,note:'Bakalan capek sih.'}]}},
+returns:{
+Kediri:[{n:'Kahuripan',r:'Maos – Kediri',d:'03.46',a:'10.32',ad:6,p:80000,note:'Aku bisa anter pagi-pagi, tapi consider ulang aja kalau mau pilih ini karena tempat duduk.'},
+{n:'Malabar',r:'Maos – Kediri',d:'14.13',a:'20.04',ad:6,p:310000,note:'Enak nih nanti malamnya bisa tidur, dan waktunya sekalian checkout.'},
+{n:'Kertanegara',r:'Kroya – Kediri',d:'19.16',a:'01.06',ad:7,p:280000,note:'Nanti di sana memang ada yang jemput jam segini?'}],
+Malang:[{n:'Kertanegara',r:'Kroya – Malang',d:'19.16',a:'03.37',ad:7,p:280000},
+{n:'Malioboro',r:'Kroya – Malang',d:'08.26',a:'17.02',ad:6,p:280000}]},
+hotels:[
+{id:'noola',n:'Noola Hotel Cilacap',p:328683,nights:1,note:'Oke.',photo:''},
+{id:'ns',n:'NS Hotel',p:314985,nights:1,note:'Minggu pagi ada CFD di depannya.',photo:''},
+{id:'sindoro',n:'Sindoro Hotel',p:303770,nights:1,note:'Oke.',photo:''},
+{id:'sukun',n:'Sukun Hotel',p:248368,nights:1,note:'Oke.',photo:''}],
+dests:[
+{id:'d1',n:'Ditepinya Sungai Serayu',dur:90,map:'https://maps.app.goo.gl/cyMtKRYFd1TsJZNt5'},
+{id:'d2',n:'Diselatan Coffe Space',dur:90,map:'https://maps.app.goo.gl/3piQpxitUpY1Efws8'},
+{id:'d3',n:'Swandy Jaya',dur:60,map:'https://maps.app.goo.gl/TTAWVFUHF4MLY8TT7'},
+{id:'d4',n:'Abaus',dur:60,map:'https://maps.app.goo.gl/4Afy4ZwBBksWWXqZ7'},
+{id:'d5',n:'Pantai Kemiren',dur:120,map:'https://maps.app.goo.gl/UuWeWMm2ZCwDodJe8'},
+{id:'d6',n:'PUPUKOCI',dur:90,desc:'Putar Putar Kota Cilacap.'}],
+foods:[
+{id:'f1',n:'Gomise',dur:60,map:'https://maps.app.goo.gl/hBtx3FL8dCF19GhZA'},
+{id:'f2',n:'Bakmi Jawa Sekul Srawung',dur:60,map:'https://maps.app.goo.gl/fNwNf9TnN3zQd6JU6'},
+{id:'f3',n:'Sate Ayam Cak Roni',dur:60,map:'https://maps.app.goo.gl/G39bvbhwVD1mCA1Z9'},
+{id:'f4',n:'Soto Ayam Pak Yatno',dur:60,map:'https://maps.app.goo.gl/m7uZHvrqaLbAMor6A'},
+{id:'f5',n:'Bubur Ayam Priangan',dur:45,map:'https://maps.app.goo.gl/LnY5hh5n4Ay9GDwF8'},
+{id:'f6',n:'Angkringan Topik',dur:60,map:'https://maps.app.goo.gl/yYhmr6VS67AJBAJC7'},
+{id:'f7',n:'Bakso Mi Ayam Pak Sariman',dur:60,map:'https://maps.app.goo.gl/kLEQPY5PV9nQKGuJ6'},
+{id:'f8',n:'Warkop Agam Medan',dur:60,map:'https://maps.app.goo.gl/rGDoQL8dN9kN5Nebj6'}],
+// nilai awal (semua bisa diubah di website)
+setDef:{sth:30,hts:45,cin:'14:00',cout:'12:00',cinM:30,coutM:30,rest:120,buf:20,wake:'07:00',sleep:'21:30'},
+budDef:{food:30000,per:1,people:2,trans:100000,misc:50000}
+};
+/* ============ LOGIKA ============ */
+const $=s=>document.querySelector(s),KEY='cilacapLagi';
+const rp=n=>'Rp'+Math.round(n).toLocaleString('id-ID');
+const P=x=>{const[a,b]=String(x).split(/[.:]/).map(Number);return a*60+(b||0)};
+const tm=m=>{m=((m%1440)+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+'.'+String(m%60).padStart(2,'0')};
+const dayN=m=>Math.floor(m/1440),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mnt=m=>{m=Math.max(0,Math.round(m));return Math.floor(m/60)+' j '+m%60+' m'};
+for(const c in DATA.trains)for(const d in DATA.trains[c])DATA.trains[c][d].forEach((x,i)=>x.id=c+d+i);
+for(const c in DATA.returns)DATA.returns[c].forEach((x,i)=>{x.id='r'+c+i;x.dd=6});
+const blank=()=>({origin:'',date:'',train:'',ret:'',hotel:'',dests:[],foods:[],dur:{},reqD:'',reqF:'',set:{...DATA.setDef},bud:{...DATA.budDef}});
+let S=blank();
+try{const l=JSON.parse(localStorage.getItem(KEY));if(l)S={...blank(),...l,set:{...DATA.setDef,...l.set},bud:{...DATA.budDef,...l.bud}}}catch(e){}
+const curT=()=>((DATA.trains[S.origin]||{})[S.date]||[]).find(x=>x.id==S.train);
+const curR=()=>(DATA.returns[S.origin]||[]).find(x=>x.id==S.ret);
+const curH=()=>DATA.hotels.find(x=>x.id==S.hotel);
+const dur=it=>+(S.dur[it.id]??it.dur)||0;
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1800)}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+function setO(c){S.origin=c;if(!curT())S.train='';if(!curR())S.ret='';go()}
+function setD(d){S.date=d;if(!curT())S.train='';go()}
+function pickT(id){S.train=id;go()}function pickR(id){S.ret=id;go()}function pickH(id){S.hotel=id;go()}
+function tog(k,id){const a=S[k],i=a.indexOf(id);i<0?a.push(id):a.splice(i,1);go()}
+function setDur(id,v){S.dur[id]=Math.max(0,+v||0);upd()}
+function go(){renderSel();upd()}
+
+function tcard(x,fn,sel,depDay){const ov=x.ad!=depDay;return `<div class="card ${sel?'sel':''}" onclick="${fn}('${x.id}')"><div class="top"><b>🚆 ${x.n}</b><span class="price">${rp(x.p)}</span></div><small>${x.r}</small><div>🕐 ${x.d} → ${x.a}${ov?' ('+x.ad+' Des)':''}</div>${x.note?`<div class="note">💬 ${x.note}</div>`:''}</div>`}
+function pcard(it,k,ic){const on=S[k].includes(it.id);return `<div class="card ${on?'sel':''}" onclick="tog('${k}','${it.id}')"><div class="top"><b>${ic} ${it.n}</b></div>${it.desc?`<small>${it.desc}</small>`:''}<div style="margin-top:8px" onclick="event.stopPropagation()">⏱️ <input class="dur" type="number" min="0" step="15" value="${dur(it)}" onchange="setDur('${it.id}',this.value)"> menit ${it.map?`<br><a href="${it.map}" target="_blank" rel="noopener">📍 Buka Google Maps</a>`:''}</div></div>`}
+
+function renderSel(){
+$('#origins').innerHTML=['Kediri','Malang'].map(c=>`<button class="chip ${S.origin==c?'on':''}" onclick="setO('${c}')">${c=='Kediri'?'🌾':'🍎'} Dari ${c}</button>`).join('');
+$('#dates').innerHTML=[4,5].map(d=>`<button class="chip ${S.date==d?'on':''}" onclick="setD(${d})">📅 ${d} Desember 2026</button>`).join('');
+const L=(DATA.trains[S.origin]||{})[S.date]||[];
+$('#trains').innerHTML=!S.origin||!S.date?'<p class="hint">Pilih kota dan tanggal dulu ya 🚉</p>':L.map(x=>tcard(x,'pickT',x.id==S.train,S.date)).join('');
+$('#rets').innerHTML=!S.origin?'<p class="hint">Pilih kota asal dulu di bagian kereta berangkat 🚉</p>':DATA.returns[S.origin].map(x=>tcard(x,'pickR',x.id==S.ret,6)).join('');
+$('#hotels').innerHTML=DATA.hotels.map(h=>`<div class="card ${S.hotel==h.id?'sel':''}" onclick="pickH('${h.id}')"><div class="photo">${h.photo?`<img src="${h.photo}" alt="${h.n}">`:'🏨'}</div><div class="top"><b>${h.n}</b></div><div class="price">${rp(h.p)}</div><small>🌙 ${h.nights} malam</small><div class="note">💬 ${h.note}</div><button class="chip ${S.hotel==h.id?'on':''}" style="margin-top:10px">${S.hotel==h.id?'Dipilih ✓':'Pilih'}</button></div>`).join('');
+$('#dests').innerHTML=DATA.dests.map(d=>pcard(d,'dests','📍')).join('');
+$('#foods').innerHTML=DATA.foods.map(d=>pcard(d,'foods','🍽️')).join('');
+}
+
+/* ----- kalkulator + generator itinerary ----- */
+const W=[[420,600,'Sarapan 🥐'],[690,870,'Makan siang 🍜'],[1020,1230,'Makan malam 🍛']];
+function calc(){
+const t=curT(),r=curR();if(!t||!r)return null;
+const s=S.set,A=t.ad*1440+P(t.a),D=6*1440+P(r.d),start=A+s.sth,end=D-s.hts;
+const stA=t.r.split('–')[1].trim(),stR=r.r.split('–')[0].trim();
+if(end<=start)return{bad:'Waktu di Cilacap terlalu singkat untuk kombinasi kereta ini. Coba ganti kereta berangkat atau pulang.'};
+const ci=Math.max(start,t.ad*1440+P(s.cin)),fx=[{s:ci,e:ci+s.cinM,l:'Check-in 🔑'}];
+const cos=Math.min(6*1440+P(s.cout),end-s.coutM);
+if(cos>=ci+s.cinM)fx.push({s:cos,e:cos+s.coutM,l:'Checkout 🧳'});
+const rs=ci===start?ci+s.cinM:start,re=Math.min(rs+s.rest,end);
+const segs=[];
+for(let d=t.ad;d<=6;d++){const a=Math.max(d*1440+P(s.wake),re),b=Math.min(d*1440+P(s.sleep),end);if(b>a)segs.push({s:a,e:b})}
+const raw=segs.reduce((n,g)=>n+g.e-g.s,0);
+const fxIn=segs.reduce((n,g)=>n+fx.reduce((m,f)=>m+Math.max(0,Math.min(g.e,f.e)-Math.max(g.s,f.s)),0),0);
+const free=raw-fxIn;
+const D2=S.dests.map(id=>DATA.dests.find(x=>x.id==id)).map(x=>({...x,dur:dur(x),ic:'📍 '})),
+F2=S.foods.map(id=>DATA.foods.find(x=>x.id==id)).map(x=>({...x,dur:dur(x),ic:'🍽️ '}));
+const all=[...D2,...F2],nD=D2.length,nF=F2.length,ev=[],used={};
+const fit=(t0,list,max)=>list.findIndex(x=>t0+s.buf+x.dur<=max);
+const put=(it,t0)=>{if(s.buf>0)ev.push({s:t0,e:t0+s.buf,l:'Perjalanan ke '+it.n+' 🚕'});const a=t0+s.buf;ev.push({s:a,e:a+it.dur,l:it.ic+it.n});return a+it.dur};
+segs.forEach(sg=>{let t0=sg.s,g=0;
+while(t0<sg.e&&g++<300){
+const f=fx.find(x=>t0>=x.s&&t0<x.e);if(f){t0=f.e;continue}
+const lim=Math.min(sg.e,...fx.filter(x=>x.s>t0).map(x=>x.s)),day=dayN(t0),m=t0%1440;
+const wi=W.findIndex((w,i)=>m>=w[0]&&m<w[1]&&!used[day+'-'+i]);
+if(wi>=0&&F2.length){used[day+'-'+wi]=1;const i=fit(t0,F2,lim);if(i>=0){t0=put(F2.splice(i,1)[0],t0);continue}}
+const nw=F2.length?W.map((w,i)=>[day*1440+w[0],i]).find(a=>a[0]>t0&&!used[day+'-'+a[1]]):null;
+const i=fit(t0,D2,nw?Math.min(lim,nw[0]):lim);
+if(i>=0){t0=put(D2.splice(i,1)[0],t0);continue}
+if(nw&&nw[0]<lim){ev.push({s:t0,e:nw[0],l:'Waktu santai / ngopi ☕'});t0=nw[0];continue}
+if(lim<sg.e){t0=lim;continue}
+break}});
+const dropped=[...D2,...F2],okD=nD-D2.length,okF=nF-F2.length;
+const needDur=all.reduce((n,x)=>n+x.dur,0),needBuf=all.length*s.buf,need=needDur+needBuf;
+let status='Aman',col='var(--ok)';
+if(dropped.length||need>free){status='Tidak memungkinkan';col='var(--bad)'}else if(free>0&&need/free>0.8){status='Padat';col='var(--warn)'}
+const base=[{s:A,l:'Tiba di Stasiun '+stA+' 🚉'},{s:A,e:start,l:'Perjalanan ke penginapan 🚕'},{s:rs,e:re,l:'Istirahat 😴'},
+...fx.filter(f=>f.e<=end).map(f=>({s:f.s,e:f.e,l:f.l}))];
+for(let d=t.ad;d<6;d++){const a=Math.max(d*1440+P(s.sleep),start),b=Math.min((d+1)*1440+P(s.wake),end);if(b>a)base.push({s:a,e:b,l:'Tidur 🌙'})}
+const evs=[...base,...ev,{s:end,e:D,l:'Menuju Stasiun '+stR+' 🚕'},{s:D,l:'Kereta '+r.n+' berangkat 🚆'}].sort((a,b)=>a.s-b.s);
+return{t,r,A,D,start,end,stA,stR,raw,free,fxIn,need,needDur,needBuf,all,nD,nF,okD,okF,dropped,status,col,evs,total:end-start,rest:(end-start)-raw,placed:all.filter(x=>!dropped.includes(x))}}
+
+function itinHTML(C){
+if(!C)return '<p class="hint">Lengkapi kereta berangkat &amp; pulang dulu ya.</p>';
+if(C.bad)return `<p>${C.bad}</p>`;
+let h='',cur=-1;
+C.evs.forEach(e=>{const d=dayN(e.s);if(d!=cur){cur=d;h+=`<div class="day"><h3>🗓️ ${d} Desember</h3></div>`}
+h+=`<div class="ev"><b>${tm(e.s)}${e.e?' – '+tm(e.e):''}</b><span>${e.l}</span></div>`});
+return h}
+
+function budget(){
+const t=curT(),r=curR(),h=curH(),b=S.bud;
+const tk=(t?t.p:0)+(r?r.p:0),ho=h?h.p*h.nights:0,fd=b.food*(b.per?b.people:1)*S.foods.length,tr=+b.trans||0,ms=+b.misc||0;
+return{tk,ho,fd,tr,ms,tot:tk+ho+fd+tr+ms}}
+
+function missing(){const m=[];if(!S.origin)m.push('kota asal');if(!S.date)m.push('tanggal berangkat');if(S.origin&&S.date&&!curT())m.push('kereta berangkat');if(!curR())m.push('kereta pulang');if(!curH())m.push('penginapan');return m}
+
+function upd(){
+const C=calc(),B=budget();
+// kalkulator
+let h='';
+if(!C)h='<p class="hint">Pilih kereta berangkat dan pulang untuk melihat hitungan waktu.</p>';
+else if(C.bad)h=`<p>${C.bad}</p>`;
+else{
+h=`<p>Tiba <b>${C.t.ad} Des ${C.t.a}</b> di ${C.stA} · Pulang <b>${tm(C.D)}</b> dari ${C.stR}</p><p>Status: <span class="badge" style="background:${C.col}">${C.status}</span></p><div class="stats">
+<div class="stat">Total waktu di Cilacap<b>${mnt(C.total)}</b></div>
+<div class="stat">Istirahat &amp; tidur<b>${mnt(C.rest)}</b></div>
+<div class="stat">Perjalanan stasiun (2x)<b>${mnt(+S.set.sth+ +S.set.hts)}</b></div>
+<div class="stat">Waktu aktif<b>${mnt(C.raw)}</b></div>
+<div class="stat">Check-in / checkout<b>${mnt(C.fxIn)}</b></div>
+<div class="stat">Aktivitas dipilih<b>${mnt(C.needDur)}</b></div>
+<div class="stat">Buffer antar lokasi<b>${mnt(C.needBuf)}</b></div>
+<div class="stat">Sisa waktu<b>${C.free-C.need<0?'-':''}${mnt(Math.abs(C.free-C.need))}</b></div>
+<div class="stat">Destinasi realistis<b>${C.okD} dari ${C.nD}</b></div>
+<div class="stat">Tempat makan realistis<b>${C.okF} dari ${C.nF}</b></div></div>`;
+if(C.dropped.length)h+=`<p>💡 <b>Rekomendasi:</b> yang kebagian jadwal: ${C.placed.map(x=>x.n).join(', ')||'-'}. Belum muat: <b>${C.dropped.map(x=>x.n).join(', ')}</b>. Kurangi durasi/buffer, atau pilih kereta dengan waktu lebih lama di Cilacap.</p>`;
+else if(C.all.length)h+='<p>💡 Semua pilihanmu muat di jadwal. Yang dipilih lebih dulu mendapat prioritas.</p>';
+else h+='<p class="hint">Belum ada destinasi atau tempat makan yang dipilih.</p>'}
+$('#calc').innerHTML=h;
+$('#itin').innerHTML=itinHTML(C);
+// budget
+const cat=[['Tiket kereta',B.tk,'var(--blueD)'],['Penginapan',B.ho,'var(--blue)'],['Makan',B.fd,'#c9a36b'],['Transportasi lokal',B.tr,'#8a6a4f'],['Tambahan',B.ms,'var(--beige)']];
+$('#budget').innerHTML=`<div class="bar">${cat.map(c=>`<div style="width:${B.tot?c[1]/B.tot*100:0}%;background:${c[2]}"></div>`).join('')}</div><div class="leg">${cat.map(c=>`<span><i style="background:${c[2]}"></i>${c[0]}: <b>${rp(c[1])}</b></span>`).join('')}</div><h3 style="margin-top:10px">TOTAL ESTIMASI: ${rp(B.tot)}</h3>`;
+// ringkasan
+const t=curT(),r=curR(),ho=curH(),m=missing();
+let s=`<h2>OUR LITTLE TRIP</h2><div class="c">Cilacap, 4 - 6 December 2026 💙</div>`;
+if(m.length)s+=`<p class="hint">Belum lengkap. Pilih dulu: <b>${m.join(', ')}</b>.</p>`;
+else{
+const dn=S.dests.map(id=>DATA.dests.find(x=>x.id==id).n),fn=S.foods.map(id=>DATA.foods.find(x=>x.id==id).n);
+if(S.reqD.trim())dn.push('Request: '+S.reqD.trim());if(S.reqF.trim())fn.push('Request: '+S.reqF.trim());
+s+=`<p>🏠 <b>Kota asal:</b> ${S.origin}</p><p>🚆 <b>Berangkat:</b> ${t.n} (${t.r}), ${S.date} Des ${t.d} → ${t.ad} Des ${t.a} · ${rp(t.p)}</p><p>🚉 <b>Stasiun tiba:</b> ${t.r.split('–')[1].trim()}</p><p>🔙 <b>Pulang:</b> ${r.n} (${r.r}), 6 Des ${r.d} → ${r.ad} Des ${r.a} · ${rp(r.p)}</p><p>🛏️ <b>Penginapan:</b> ${ho.n} · ${rp(ho.p)}</p><p>📍 <b>Destinasi:</b> ${dn.map(esc).join(', ')||'-'}</p><p>🍽️ <b>Makan:</b> ${fn.map(esc).join(', ')||'-'}</p><h3>Itinerary harian</h3>${itinHTML(C)}<h3 style="margin-top:14px">Estimasi total biaya: ${rp(B.tot)}</h3>`}
+$('#sum').innerHTML=s;persist()}
+
+function sumText(){
+const t=curT(),r=curR(),ho=curH(),C=calc(),B=budget();
+const dn=S.dests.map(id=>DATA.dests.find(x=>x.id==id).n),fn=S.foods.map(id=>DATA.foods.find(x=>x.id==id).n);
+if(S.reqD.trim())dn.push('Request: '+S.reqD.trim());if(S.reqF.trim())fn.push('Request: '+S.reqF.trim());
+let x=`🚆 CILACAP LAGI 💙\nCilacap, 4 - 6 December 2026\n\nKota asal: ${S.origin}\nBerangkat: ${t.n} (${t.r}), ${S.date} Des ${t.d} → ${t.ad} Des ${t.a} (${rp(t.p)})\nPulang: ${r.n} (${r.r}), 6 Des ${r.d} → ${r.ad} Des ${r.a} (${rp(r.p)})\nPenginapan: ${ho.n} (${rp(ho.p)})\nDestinasi: ${dn.join(', ')||'-'}\nMakan: ${fn.join(', ')||'-'}\n\nITINERARY`;
+if(C&&!C.bad){let cur=-1;C.evs.forEach(e=>{const d=dayN(e.s);if(d!=cur){cur=d;x+=`\n\n${d} Desember`}x+=`\n- ${tm(e.s)}${e.e?'-'+tm(e.e):''}: ${e.l}`})}
+return x+`\n\nEstimasi total biaya: ${rp(B.tot)}`}
+
+function guard(){const m=missing();if(m.length){toast('Lengkapi dulu: '+m.join(', '));return false}return true}
+function saveTrip(){persist();toast('Pilihan tersimpan di perangkat ini 💾')}
+function printTrip(){if(guard())window.print()}
+function copyTrip(){if(!guard())return;const x=sumText();
+const fb=()=>{const a=document.createElement('textarea');a.value=x;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Ringkasan disalin 📋')}catch(e){toast('Gagal menyalin')}a.remove()};
+navigator.clipboard?navigator.clipboard.writeText(x).then(()=>toast('Ringkasan disalin 📋'),fb):fb()}
+function resetAll(){if(!confirm('Hapus semua pilihan?'))return;S=blank();try{localStorage.removeItem(KEY)}catch(e){}init();toast('Pilihan direset')}
+
+function init(){
+const sf=[['sth','Stasiun → hotel (menit)','number'],['hts','Hotel → stasiun (menit)','number'],['cin','Jam check-in','time'],['cout','Jam checkout','time'],['cinM','Durasi check-in (menit)','number'],['coutM','Durasi checkout (menit)','number'],['rest','Waktu istirahat (menit)','number'],['buf','Buffer antar lokasi (menit)','number'],['wake','Mulai aktivitas harian','time'],['sleep','Selesai aktivitas harian','time']];
+$('#setForm').innerHTML=sf.map(f=>`<div><label>${f[1]}<input type="${f[2]}" value="${S.set[f[0]]}" ${f[2]=='number'?'min="0"':''} data-k="${f[0]}"></label></div>`).join('');
+$('#setForm').oninput=e=>{const k=e.target.dataset.k;if(!k||!e.target.value)return;S.set[k]=e.target.type=='number'?Math.max(0,+e.target.value):e.target.value;upd()};
+$('#budForm').innerHTML=`<div><label>Budget makan per tempat (Rp)<input type="number" min="0" step="5000" value="${S.bud.food}" data-b="food"></label></div>
+<div><label>Hitung<select data-b="per"><option value="1" ${S.bud.per?'selected':''}>Per orang</option><option value="0" ${S.bud.per?'':'selected'}>Total</option></select></label></div>
+<div><label>Jumlah orang<input type="number" min="1" value="${S.bud.people}" data-b="people"></label></div>
+<div><label>Transportasi lokal (Rp)<input type="number" min="0" step="10000" value="${S.bud.trans}" data-b="trans"></label></div>
+<div><label>Biaya tambahan (Rp)<input type="number" min="0" step="10000" value="${S.bud.misc}" data-b="misc"></label></div>`;
+$('#budForm').oninput=$('#budForm').onchange=e=>{const k=e.target.dataset.b;if(!k)return;S.bud[k]=+e.target.value||0;upd()};
+$('#reqD').value=S.reqD;$('#reqF').value=S.reqF;
+$('#reqD').oninput=e=>{S.reqD=e.target.value;upd()};$('#reqF').oninput=e=>{S.reqF=e.target.value;upd()};
+renderSel();upd()}
+init();
+</script></body></html>
